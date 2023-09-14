@@ -1,0 +1,50 @@
+# common
+fps: 30          # push/publish fps, valid when source is not from ros topic
+bitrate: 2000    # kbps, valid only to rtmp
+show: false
+
+# video/stream to rtmp ----------------------------------------------------------
+
+# source: "rtmp://127.0.0.1/live/input"       # rtsp/rtmp
+source: "/path/to/your/video.mp4"             # local video file
+address: "rtmp://127.0.0.1/live/output"       # support rtmp only
+
+# do not edit the following config unless you know what are you doing
+ros_source: false
+compressed: true
+ros_address: false
+pub_compressed: true
+
+# video/stream to ros -----------------------------------------------------------
+
+# # source: "rtmp://127.0.0.1/live/input"   # rtsp/rtmp
+# source: "/path/to/your/video.mp4"         # local video file
+# address: "/image/input/compressed"        # ros topic name
+# pub_compressed: true                      # publish compressed image
+
+# # do not edit the following config unless you know what are you doing
+# ros_source: false
+# compressed: true
+# ros_address: true
+
+# ros to rtmp -------------------------------------------------------------------
+
+# source: "/image/input/compressed"       # ros image topic
+# compressed: true                        # whether subscribed image is compressed
+# address: "rtmp://127.0.0.1/live/output" # support rtmp only
+
+# # do not edit the following config unless you know what are you doing
+# ros_source: true
+# ros_address: false
+# pub_compressed: true
+
+# ros to ros --------------------------------------------------------------------
+
+# source: "/image/input/compressed"       # ros image topic
+# compressed: true                        # whether subscribed image is compressed
+# address: "/image/output/compressed"     # ros topic name
+# pub_compressed: true                    # publish compressed image
+
+# # do not edit the following config unless you know what are you doing
+# ros_source: true
+# ros_address: true
