@@ -61,10 +61,10 @@ cv::VideoWriter getVideoWriter(
     int bitrate=500
 ) {
     if (startsWith(address, "rtmp://") || startsWith(address, "rtsp://")) {
-        string stream_type = startsWith(address, "rtmp://")?"rtmpsink":"rtspsink";
+        string stream_type = startsWith(address, "rtmp://")?"flvmux ! rtmpsink":"rtspclientsink";
         string dist = "appsrc ! videoconvert ! x264enc speed-preset=ultrafast bitrate=" + 
-                    to_string(bitrate) + string(" tune=zerolatency ! flvmux ! ") + 
-                    stream_type + "location=" + address;
+                    to_string(bitrate) + string(" tune=zerolatency ! ") + 
+                    stream_type + " location=" + address;
         
         cv::VideoWriter w(
             dist,
