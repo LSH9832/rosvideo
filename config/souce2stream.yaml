@@ -3,7 +3,7 @@ fps: 30          # push/publish fps, valid when source is not from ros topic
 bitrate: 2000    # kbps, valid only to rtmp
 show: false
 
-# video/stream to rtmp ----------------------------------------------------------
+# video/stream to rtmp/rtsp -----------------------------------------------------
 
 # source: "rtmp://127.0.0.1/live/input"       # rtsp/rtmp
 source: "/path/to/your/video.mp4"             # local video file
@@ -27,7 +27,7 @@ pub_compressed: true
 # compressed: true
 # ros_address: true
 
-# ros to rtmp -------------------------------------------------------------------
+# ros to rtmp/rtsp --------------------------------------------------------------
 
 # source: "/image/input/compressed"       # ros image topic
 # compressed: true                        # whether subscribed image is compressed
