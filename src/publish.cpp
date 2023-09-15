@@ -38,24 +38,43 @@ argsutil::argparser get_args(int argc, char* argv[], bool show=false) {
     return args;
 }
 
+bool endsWith(const std::string& str, const std::string& suffix) {  
+    if (str.length() >= suffix.length())
+        return (0 == str.compare(str.length() - suffix.length(), suffix.length(), suffix));  
+    else
+        return false;
+} 
+
+
+bool startsWith(const std::string& str, const std::string& prefix) {  
+    if (str.length() >= prefix.length())
+        return (0 == str.compare(0, prefix.length(), prefix));  
+    else
+        return false;
+}
+
 
 cv::VideoWriter getVideoWriter(
     cv::Size imgsz,
-    string rtmp_address="rtmp://127.0.0.1/live/test", 
+    string address="rtmp://127.0.0.1/live/test", 
     double fps=30., 
     int bitrate=500
 ) {
-    string dist = "appsrc ! videoconvert ! x264enc speed-preset=ultrafast bitrate=" + 
-                  std::to_string(bitrate) + 
-                  std::string(" tune=zerolatency ! flvmux ! rtmpsink location=") + 
-                  rtmp_address;
-    cv::VideoWriter w(
-        dist,
-        cv::CAP_GSTREAMER,
-        fps,
-        imgsz
-    );
-    return w;
+    if (startsWith(address, "rtmp://") || startsWith(address, "rtsp://")) {
+        string stream_type = startsWith(address, "rtmp://")?"rtmpsink":"rtspsink";
+        string dist = "appsrc ! videoconvert ! x264enc speed-preset=ultrafast bitrate=" + 
+                    to_string(bitrate) + string(" tune=zerolatency ! flvmux ! ") + 
+                    stream_type + "location=" + address;
+        
+        cv::VideoWriter w(
+            dist,
+            cv::CAP_GSTREAMER,
+            fps,
+            imgsz
+        );
+        return w;
+    } else
+        return cv::VideoWriter(address, cv::VideoWriter::fourcc('m', 'p', '4', 'v'), fps, imgsz);
 }
 
 
@@ -66,6 +85,7 @@ void process_image() {
      */
     pub_img = img_to_process;
 }
+
 
 int show_img() {
     int key = -1;
