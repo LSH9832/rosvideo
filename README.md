@@ -1,4 +1,4 @@
-# rosvideo: build bridge between ros Image topic and rtmp stream
+# rosvideo: build bridge between ros Image topic and rtmp/rtsp stream
 
 ## install
 ```bash
