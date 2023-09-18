@@ -10,7 +10,7 @@ wget https://liushihan.site/download/rosvideo.bash && bash rosvideo.bash
 ```
 **if you need a rtsp/rtmp server, it is recomended to use this**
 
-```
+```bash
 wget https://liushihan.site/download/mediaserver.bash && bash mediaserver.bash
 ```
 
