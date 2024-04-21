@@ -11,7 +11,7 @@ wget https://liushihan.site/download/rosvideo.bash && bash rosvideo.bash
 **if you need a rtsp/rtmp server, it is recomended to use this**
 
 ```bash
-wget https://liushihan.site/download/mediaserver.bash && bash mediaserver.bash
+wget https://liushihan.site/download/install/linux/mediaserver.bash && bash mediaserver.bash
 ```
 
 just modify the function "void process_image()" in src/publish.cpp (if you want to do something with the image), line 62 and then
