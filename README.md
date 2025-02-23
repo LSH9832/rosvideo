@@ -6,7 +6,7 @@ you can publish your video from file/rtmp/rtsp/ros(Image/CompressedImage) to fil
 ## install
 ```bash
 cd ~  # or any path you want to create this workspace (rosvid_ws)
-wget https://liushihan.site/download/rosvideo.bash && bash rosvideo.bash
+wget https://liushihan.site/download/install/linux/rosvideo.bash && bash rosvideo.bash
 ```
 **if you need a rtsp/rtmp server, it is recomended to use this**
 
